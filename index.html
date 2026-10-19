@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="rai 的日系文青遊戲風作品集，分享品牌設計、AI 創作與遊戲影音。" name="description"/>
+<title>首頁｜rai 的創作存檔</title>
+<style>
+
+/* ==================================================
+   rai | 遊戲感文青作品集
+   色彩：奶油白、霧森林綠、深墨色、柔和杏色
+   沒有使用任何 CSS 框架
+   ================================================== */
+
+/* 01. 全站色彩與基本設定 */
+:root {
+    --bg: #f6f5ee;
+    --paper: #fffefa;
+    --ink: #303c38;
+    --muted: #748079;
+    --green: #647d71;
+    --dark-green: #3d594d;
+    --light-green: #e9eee7;
+    --peach: #ead9ca;
+    --line: #dce2d9;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.9;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+.wrap {
+    width: min(1040px, calc(100% - 48px));
+    margin: 0 auto;
+}
+
+/* 02. 導覽列 */
+header {
+    background: rgba(246, 245, 238, 0.97);
+    border-bottom: 1px solid var(--line);
+}
+
+.nav {
+    display: flex;
+    min-height: 80px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.logo {
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+}
+
+.logo span {
+    color: var(--green);
+    padding: 0 5px;
+}
+
+nav {
+    display: flex;
+    gap: 12px;
+}
+
+nav a {
+    padding: 7px 15px;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    color: var(--muted);
+    font-size: 13px;
+    transition: 0.2s ease;
+}
+
+nav a:hover,
+nav a.active {
+    background: var(--light-green);
+    border-color: var(--line);
+    color: var(--dark-green);
+}
+
+/* 03. 共用文字與按鈕 */
+.eyebrow,
+.tag {
+    display: inline-block;
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+.eyebrow::before {
+    content: "✦ ";
+    color: #b9977f;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.55;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 11px 26px;
+    background: var(--dark-green);
+    color: white;
+    font-size: 14px;
+    border: 1px solid var(--dark-green);
+    border-radius: 30px;
+    transition: 0.2s ease;
+}
+
+.button:hover {
+    color: var(--dark-green);
+    background: var(--light-green);
+    transform: translateY(-2px);
+}
+
+.more {
+    font-size: 14px;
+    color: var(--dark-green);
+    border-bottom: 1px solid var(--green);
+}
+
+/* 04. 首頁主視覺 */
+.hero {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 60px;
+    padding: 90px 0 92px;
+}
+
+.hero h1 {
+    margin: 22px 0;
+    font-family: "Noto Serif TC", "PMingLiU", serif;
+    font-weight: 600;
+    font-size: clamp(35px, 4.6vw, 58px);
+    letter-spacing: 0.06em;
+}
+
+.hero p {
+    max-width: 470px;
+    color: var(--muted);
+}
+
+.hero-photo {
+    position: relative;
+    padding: 12px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 18px 45px rgba(61, 89, 77, 0.08);
+}
+
+.hero-photo img {
+    height: 450px;
+    border-radius: 12px;
+    filter: saturate(0.70);
+}
+
+.hero-photo::after {
+    content: "PLAYER 01  /  CREATIVE MODE";
+    position: absolute;
+    right: 25px;
+    bottom: 26px;
+    padding: 7px 13px;
+    color: var(--dark-green);
+    background: rgba(255, 254, 250, 0.93);
+    border-radius: 20px;
+    font-size: 10px;
+    letter-spacing: 0.10em;
+}
+
+/* 05. 首頁作品預覽 */
+section {
+    padding-top: 66px;
+    padding-bottom: 70px;
+}
+
+.section-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.section-top h2,
+.section h2 {
+    margin: 10px 0;
+    font-family: "Noto Serif TC", "PMingLiU", serif;
+    font-weight: 600;
+    font-size: 29px;
+}
+
+.section-top p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.project {
+    overflow: hidden;
+    padding: 11px 11px 18px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    transition: 0.2s ease;
+}
+
+.project:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(61, 89, 77, 0.09);
+}
+
+.project .image {
+    overflow: hidden;
+    border-radius: 9px;
+    background: var(--light-green);
+}
+
+.project img {
+    height: 210px;
+    filter: saturate(0.72);
+    transition: transform 0.2s ease;
+}
+
+.project:hover img {
+    transform: scale(1.035);
+}
+
+.project h3 {
+    margin: 17px 5px 3px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.project p {
+    margin: 0 5px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* 06. 首頁結尾 */
+.note {
+    background: var(--light-green);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.note-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.note h2 {
+    margin: 10px 0 3px;
+    font-family: "Noto Serif TC", "PMingLiU", serif;
+    font-size: 28px;
+}
+
+.note p {
+    margin: 0;
+    color: var(--muted);
+}
+
+/* 07. 內頁標題 */
+.page-head {
+    padding: 75px 0 45px;
+    border-bottom: 1px solid var(--line);
+}
+
+.page-head h1 {
+    margin: 15px 0;
+    font-family: "Noto Serif TC", "PMingLiU", serif;
+    font-size: clamp(38px, 5vw, 54px);
+}
+
+.page-head p {
+    max-width: 670px;
+    color: var(--muted);
+}
+
+/* 08. 作品詳情頁 */
+.work {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 50px;
+    padding: 75px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.work:nth-of-type(even) .work-image {
+    order: 2;
+}
+
+.work-image {
+    padding: 12px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 17px;
+}
+
+.work-image img {
+    height: 310px;
+    border-radius: 9px;
+    filter: saturate(0.75);
+}
+
+.tag {
+    padding: 5px 12px;
+    background: var(--light-green);
+    border-radius: 30px;
+    letter-spacing: 0.08em;
+}
+
+.work h2 {
+    margin: 17px 0;
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.work p {
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.work .meta {
+    margin-top: 24px;
+    color: var(--dark-green);
+    font-size: 13px;
+}
+
+/* 09. 關於我頁 */
+.intro {
+    display: grid;
+    grid-template-columns: 0.90fr 1.10fr;
+    align-items: center;
+    gap: 55px;
+    border-bottom: 1px solid var(--line);
+}
+
+.intro img {
+    height: 400px;
+    padding: 10px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+}
+
+.intro h2 {
+    font-family: "Noto Serif TC", "PMingLiU", serif;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.intro p,
+.section p,
+.details p {
+    color: var(--muted);
+}
+
+.signature {
+    margin-top: 25px;
+    color: var(--green);
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 21px;
+}
+
+.section {
+    border-bottom: 1px solid var(--line);
+}
+
+.interests {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.interest {
+    min-height: 190px;
+    padding: 25px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 15px;
+}
+
+.interest .num {
+    color: var(--green);
+    font-size: 13px;
+    letter-spacing: 0.13em;
+}
+
+.interest h3 {
+    margin: 12px 0 5px;
+    font-size: 21px;
+}
+
+.interest p {
+    margin: 0;
+    font-size: 13px;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 65px;
+}
+
+.details ul {
+    padding-left: 20px;
+    color: var(--muted);
+}
+
+/* 10. 頁尾 */
+footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* 11. 手機排版 */
+@media (max-width: 760px) {
+    .wrap {
+        width: calc(100% - 36px);
+    }
+
+    .nav {
+        flex-wrap: wrap;
+        padding: 16px 0;
+    }
+
+    nav {
+        gap: 3px;
+    }
+
+    nav a {
+        padding: 6px 11px;
+    }
+
+    .hero,
+    .work,
+    .intro,
+    .details {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .hero {
+        padding: 55px 0;
+    }
+
+    .hero-photo img {
+        height: 340px;
+    }
+
+    .projects,
+    .interests {
+        grid-template-columns: 1fr;
+    }
+
+    .project img {
+        height: 250px;
+    }
+
+    .work:nth-of-type(even) .work-image {
+        order: 0;
+    }
+
+    .work {
+        padding: 50px 0;
+    }
+
+    .work-image img,
+    .intro img {
+        height: 280px;
+    }
+
+    .section-top,
+    .note-inner,
+    .footer-inner {
+        display: block;
+    }
+
+    .more {
+        display: inline-block;
+        margin-top: 15px;
+    }
+}
+
+</style>
+</head>
+<body>
+<header>
+<!-- 網站導覽列 -->
+<div class="wrap nav">
+<a class="logo" href="index.html">rai<span>・</span>PORTFOLIO</a>
+<nav aria-label="主選單">
+<a aria-current="page" class="active" href="index.html">首頁</a>
+<a href="works.html">作品集</a>
+<a href="about.html">關於我</a>
+</nav>
+</div>
+</header>
+<main>
+<!-- 主要內容 -->
+<div class="wrap hero">
+<div>
+<div class="eyebrow">WELCOME / PLAYER RAI</div>
+<h1>把喜歡的世界，<br/>慢慢做成作品。</h1>
+<p>你好，我是 rai。喜歡遊戲裡的世界觀、細緻的畫面，也喜歡日系配色與簡單的設計。這裡是我的創作存檔，收藏品牌設計、AI 視覺與遊戲影音作品。</p>
+<a class="button" href="works.html">探索我的作品 ↗</a>
+</div>
+<div class="hero-photo">
+<img alt="遊戲氛圍主視覺示意圖片" src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&amp;fit=crop&amp;w=1100&amp;q=85"/>
+</div>
+</div>
+<section class="wrap">
+<!-- 內容區塊 -->
+<div class="section-top">
+<div>
+<div class="eyebrow">QUEST LOG / SELECTED WORKS</div>
+<h2>精選創作任務</h2>
+<p>從靈感到完成，一次解鎖一個小作品。</p>
+</div>
+<a class="more" href="works.html">查看全部作品 →</a>
+</div>
+<div class="projects">
+<!-- 作品 01：寵物品牌 -->
+<a class="project" href="works.html#project-01">
+<div class="image">
+<img alt="品牌設計示意圖，將替換為 TAIL DAY 實際作品" loading="lazy" src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&amp;fit=crop&amp;w=800&amp;q=85"/>
+</div>
+<h3>01｜TAIL DAY 寵物品牌</h3>
+<p>品牌識別 / LOGO 設計</p>
+</a>
+<!-- 作品 02：AI 視覺 -->
+<a class="project" href="works.html#project-02">
+<div class="image">
+<img alt="AI 視覺創作示意圖，將替換為個人作品" loading="lazy" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=800&amp;q=85"/>
+</div>
+<h3>02｜AI 視覺創作</h3>
+<p>角色設計 / 影像企劃</p>
+</a>
+<!-- 作品 03：影音與社群 -->
+<a class="project" href="works.html#project-03">
+<div class="image">
+<img alt="影音作品示意圖，將替換為個人作品" loading="lazy" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&amp;fit=crop&amp;w=800&amp;q=85"/>
+</div>
+<h3>03｜遊戲影音與社群設計</h3>
+<p>遊戲影片 / YouTube 封面</p>
+</a>
+</div>
+</section>
+<section class="note">
+<!-- 內容區塊 -->
+<div class="wrap note-inner">
+<div>
+<div class="eyebrow">PLAYER PROFILE / ABOUT RAI</div>
+<h2>想認識作品背後的玩家？</h2>
+<p>遊戲、設計、創作與生活，都是我的靈感來源。</p>
+</div>
+<a class="button" href="about.html">更多關於我 ↗</a>
+</div>
+</section>
+</main>
+<footer>
+<!-- 網站頁尾 -->
+<div class="wrap footer-inner">
+<span>© 2026 rai. Made with HTML &amp; CSS.</span>
+<span>用好奇心，把想法慢慢做成作品。</span>
+</div>
+</footer>
+</body>
+</html>
